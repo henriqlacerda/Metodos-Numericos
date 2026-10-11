@@ -49,4 +49,9 @@ Este repositório foi criado com o objetivo de auxiliar o grupo no trabalho 01 q
 
 ---
 
+## OBS's
+
+@Chimecho, @Caio e @Diego coloquei o struct que os métodos têm q retornar p programa ficar certin no começo do código.
+
+
 É importante ressaltar que, independentemente desta divisão de desenvolvimento, todos os 7 membros devem obrigatoriamente apresentar alguma parte do trabalho no dia do sorteio, sob pena de receber nota zero na apresentação.   
