@@ -22,6 +22,27 @@ double f(double d, double a) {
   return a * d - d * log(d);
 }
 
+// Achar intervalos (Henrique)
+void gerarIntervaloAutomatico(double a, double &limInf, double &limSup) {
+  double raizExata = exp(a); 
+  
+  // Pega o inteiro imediatamente abaixo e acima da raiz
+  limInf = floor(raizExata);
+  limSup = ceil(raizExata);
+  
+  // Se a raizExata for um número inteiro cravado (ex: a=0 -> e^0 = 1) floor e ceil seriam iguais
+  if (limInf == limSup) {
+    limInf -= 0.5;
+    limSup += 0.5;
+  }
+  
+  // O domínio da função original tem ln(d), então d tem que ser > 0.
+  // Se o limite inferior for 0 ou negativo, empurramos ele para um valor positivo pequeno.
+  if (limInf <= 0) {
+      limInf = raizExata / 10.0; 
+  }
+}
+
 // Chimecho (Bissecção)
 ResultadoMetodo metodoBisseccao(double a, double epsilon, double limiteInferior, double limiteSuperior) {
   ResultadoMetodo res;
@@ -67,12 +88,9 @@ int main() {
     cout << "Digite o parametro de ajuste 'a' para o foguete " << i + 1 << ": ";
     cin >> valoresA[i];
     
-    cout << "Digite o limite inferior de isolamento para o foguete " << i + 1 << ": ";
-    cin >> limInf[i];
+    gerarIntervaloAutomatico(valoresA[i], limInf[i], limSup[i]);
     
-    cout << "Digite o limite superior de isolamento para o foguete " << i + 1 << ": ";
-    cin >> limSup[i];
-    cout << "\n";
+    cout << "-> Intervalo gerado analiticamente (e^a): [" << limInf[i] << ", " << limSup[i] << "]\n\n";
   }
 
   cout << "Digite a precisao desejada (epsilon, ex: 0.00001): ";
@@ -86,7 +104,7 @@ int main() {
   cout << "---------------------------------------------------------------------------------\n";
   cout << "                                QUADRO RESPOSTA\n";
   cout << "---------------------------------------------------------------------------------\n";
-  cout << left << setw(10) << "Foguete" << setw(10) << "Valor a" << setw(20) << "Erro Bissecção" << setw(20) << "Erro Pos. Falsa" << setw(20) << "Erro Newton" << "\n";
+  cout << left << setw(10) << "Foguete" << setw(10) << "Valor a" << setw(20) << "Erro Bisseccao" << setw(20) << "Erro Pos. Falsa" << setw(20) << "Erro Newton" << "\n";
   cout << "---------------------------------------------------------------------------------\n";
 
   // P ajudar na construção do quadro

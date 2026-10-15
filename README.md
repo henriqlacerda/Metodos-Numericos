@@ -9,7 +9,9 @@ Este repositório foi criado com o objetivo de auxiliar o grupo no trabalho 01 q
 **Responsabilidade central:** Coordenar o andamento da equipe, estruturar o programa base e realizar o envio.  
 **Tarefas:** Criar a interface de texto do programa em C/C++ que recebe os dados de entrada: número de foguetes ($n$), o parâmetro $a$ de cada foguete e a precisão $\epsilon$. Integrar os códigos dos desenvolvedores em um único arquivo, compilar o projeto em ambiente Linux garantindo que o executável não tenha ligações dinâmicas (LIBs estáticas), e enviar o arquivo final compactado.   
 
-**O que falta fazer?:** Tudo
+**O que falta fazer?:**
+- Implementar UI
+- *Implementar plotação de gráficos*
 
 ## 2. Desenvolvedor 1 (Método da Bissecção) - Chimecho
 **Responsabilidade central:** Lidar com a primeira exigência algorítmica do Tema 01.   
