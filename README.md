@@ -1,6 +1,6 @@
 # Metodos Numericos
 > Trabalho 01
-
+a
 ---
 
 Este repositório foi criado com o objetivo de auxiliar o grupo no trabalho 01 que tem como tema raízes de equações. Assim, dividimos as tarefas em algumas partes:
