@@ -1,71 +1,13 @@
 #include <iostream>
 #include <vector>
-#include <cmath>
 #include <iomanip> // Formatação dos quadros
 
 using namespace std;
 
-// Estrutura padronizada que os métodos devem retornar
-struct ResultadoMetodo {
-  double raiz;
-  int iteracoes;
-  double erroFinal;
-  bool convergiu; // Útil p caso do método falhar
-};
-
-// ---
-// ESPAÇO PARA A INTEGRAÇÃO DOS CÓDIGOS DOS MÉTODOS
-// ---
-
-// Função f(d) = a*d - d*ln(d)
-double f(double d, double a) {
-  return a * d - d * log(d);
-}
-
-// Achar intervalos (Henrique)
-void gerarIntervaloAutomatico(double a, double &limInf, double &limSup) {
-  double raizExata = exp(a); 
-  
-  // Pega o inteiro imediatamente abaixo e acima da raiz
-  limInf = floor(raizExata);
-  limSup = ceil(raizExata);
-  
-  // Se a raizExata for um número inteiro cravado (ex: a=0 -> e^0 = 1) floor e ceil seriam iguais
-  if (limInf == limSup) {
-    limInf -= 0.5;
-    limSup += 0.5;
-  }
-  
-  // O domínio da função original tem ln(d), então d tem que ser > 0.
-  // Se o limite inferior for 0 ou negativo, empurramos ele para um valor positivo pequeno.
-  if (limInf <= 0) {
-      limInf = raizExata / 10.0; 
-  }
-}
-
-// Chimecho (Bissecção)
-ResultadoMetodo metodoBisseccao(double a, double epsilon, double limiteInferior, double limiteSuperior) {
-  ResultadoMetodo res;
-  res.raiz = 0.0; res.iteracoes = 0; res.erroFinal = 0.0; res.convergiu = false;
-  // Chimecho
-  return res;
-}
-
-// Caio (Posição Falsa)
-ResultadoMetodo metodoPosicaoFalsa(double a, double epsilon, double limiteInferior, double limiteSuperior) {
-  ResultadoMetodo res;
-  res.raiz = 0.0; res.iteracoes = 0; res.erroFinal = 0.0; res.convergiu = false;
-  // Caio
-  return res;
-}
-
-// Diego (Newton-Raphson)
-ResultadoMetodo metodoNewtonRaphson(double a, double epsilon, double aproximacaoInicial) {
-  ResultadoMetodo res;
-  res.raiz = 0.0; res.iteracoes = 0; res.erroFinal = 0.0; res.convergiu = false;
-  // Diego
-  return res;
-}
+#include "funcoes.h"
+#include "newtonRaphson.h"
+#include "bisseccao.h"
+#include "posicaoFalsa.h"
 
 // Henrique (main)
 int main() {
@@ -87,9 +29,9 @@ int main() {
   for (int i = 0; i < n; i++) {
     cout << "Digite o parametro de ajuste 'a' para o foguete " << i + 1 << ": ";
     cin >> valoresA[i];
-    
+
     gerarIntervaloAutomatico(valoresA[i], limInf[i], limSup[i]);
-    
+
     cout << "-> Intervalo gerado analiticamente (e^a): [" << limInf[i] << ", " << limSup[i] << "]\n\n";
   }
 
@@ -99,7 +41,7 @@ int main() {
   cout << "\nCalculando...\n\n";
 
   // Saída
-  
+
   // Preparando o Quadro Resposta
   cout << "---------------------------------------------------------------------------------\n";
   cout << "                                QUADRO RESPOSTA\n";
@@ -112,12 +54,12 @@ int main() {
 
   for (int i = 0; i < n; i++) {
     double a = valoresA[i];
-    
-    resultadosB[i] = metodoBisseccao(a, epsilon, limInf[i], limSup[i]);
-    resultadosPF[i] = metodoPosicaoFalsa(a, epsilon, limInf[i], limSup[i]);
-    
+
+    resultadosB[i] = bisseccao(a, epsilon, limInf[i], limSup[i]);
+    resultadosPF[i] = posicaoFalsa(a, epsilon, limInf[i], limSup[i]);
+
     double chuteInicial = (limInf[i] + limSup[i]) / 2.0;
-    resultadosNR[i] = metodoNewtonRaphson(a, epsilon, chuteInicial);
+    resultadosNR[i] = newtonRaphson(a, chuteInicial, epsilon);
 
     // Imprimindo linha no quadro de respostas
     cout << left << setw(10) << i + 1 << setw(10) << a << setw(20) << resultadosB[i].erroFinal << setw(20) << resultadosPF[i].erroFinal << setw(20) << resultadosNR[i].erroFinal << "\n";
@@ -135,9 +77,9 @@ int main() {
 
   for (int i = 0; i < n; i++) {
     cout << left << setw(10) << i + 1;
-    
+
     cout << fixed << setprecision(5);
-    
+
     cout << "(" << limInf[i] << ", " << limSup[i] << ")" << setw(5) << "" << resultadosB[i].raiz << " (" << resultadosB[i].iteracoes << " it)      " << resultadosPF[i].raiz << " (" << resultadosPF[i].iteracoes << " it)      " << resultadosNR[i].raiz << " (" << resultadosNR[i].iteracoes << " it)\n";
   }
   cout << "---------------------------------------------------------------------------------\n";
