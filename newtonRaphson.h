@@ -3,7 +3,7 @@
 
 #include <cmath>
 
-#include "funcoes.h" // Pega o f() e df()
+#include "funcoes.h" // Pega f(x) e f'(x)
 #include "estruturas.h" // Pega o modelo de respostas
 
 // função do metodo Newton Raphson
@@ -14,10 +14,10 @@ inline ResultadoMetodo newtonRaphson(double a, double dInicial, double epsilon) 
     double erro = INFINITY;
     bool convergiu = true;
 
-    // número máximo de iterações para caso o algoritmo não convergir
+    // número máximo de iterações para caso o algoritmo não convirja
     int maxIteracoes = 1000;
 
-    // loop de aproximação da raíz
+    // loop de aproximação da raiz
     while (erro > epsilon && iteracoes < maxIteracoes) {
         double valorF = f(a, dAtual);
         double valorDF = df(a, dAtual);

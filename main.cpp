@@ -4,10 +4,10 @@
 
 using namespace std;
 
-#include "funcoes.h"
-#include "newtonRaphson.h"
-#include "bisseccao.h"
-#include "posicaoFalsa.h"
+#include "funcoes.h" // Auxiliar
+#include "bisseccao.h" // Chimecho
+#include "posicaoFalsa.h" // Caio
+#include "newtonRaphson.h" // Diego
 
 // Henrique (main)
 int main() {
