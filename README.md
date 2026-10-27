@@ -23,7 +23,7 @@ Este repositório foi criado com o objetivo de auxiliar o grupo no trabalho 01 q
 **Responsabilidade central:** Lidar com a segunda exigência algorítmica do Tema 01.   
 **Tarefas:** Implementar em C/C++ o algoritmo do método da Posição Falsa para calcular o deslocamento $d$. Manter a mesma estrutura de dados do Desenvolvedor 1 para que o Líder consiga mesclar os códigos facilmente.      
 
-**O que falta fazer?:** Tudo
+**O que falta fazer?:** Aprimorar cálculo do erro final
 
 ## 4. Desenvolvedor 3 (Método de Newton-Raphson) - Diego
 **Responsabilidade central:** Lidar com a terceira e mais complexa exigência algorítmica do Tema 01.   
