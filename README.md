@@ -1,6 +1,5 @@
 # Metodos Numericos
 > Trabalho 01
-a
 ---
 
 Este repositório foi criado com o objetivo de auxiliar o grupo no trabalho 01 que tem como tema raízes de equações. Assim, dividimos as tarefas em algumas partes:
@@ -9,27 +8,25 @@ Este repositório foi criado com o objetivo de auxiliar o grupo no trabalho 01 q
 **Responsabilidade central:** Coordenar o andamento da equipe, estruturar o programa base e realizar o envio.  
 **Tarefas:** Criar a interface de texto do programa em C/C++ que recebe os dados de entrada: número de foguetes ($n$), o parâmetro $a$ de cada foguete e a precisão $\epsilon$. Integrar os códigos dos desenvolvedores em um único arquivo, compilar o projeto em ambiente Linux garantindo que o executável não tenha ligações dinâmicas (LIBs estáticas), e enviar o arquivo final compactado.   
 
-**O que falta fazer?:**
-- Implementar UI
-- *Implementar plotação de gráficos*
+**Tudo feito**
 
 ## 2. Desenvolvedor 1 (Método da Bissecção) - Chimecho
 **Responsabilidade central:** Lidar com a primeira exigência algorítmica do Tema 01.   
 **Tarefas:** Implementar em C/C++ o algoritmo do método da Bissecção aplicado exclusivamente à equação do foguete espacial $f(d)=a*d-d*ln(d)$. Estruturar o retorno da função para que ela entregue a raiz calculada, o número de iterações e o erro final.      
 
-**O que falta fazer?:** Nada
+**Tudo feito**
 
 ## 3. Desenvolvedor 2 (Método da Posição Falsa) - Caio
 **Responsabilidade central:** Lidar com a segunda exigência algorítmica do Tema 01.   
 **Tarefas:** Implementar em C/C++ o algoritmo do método da Posição Falsa para calcular o deslocamento $d$. Manter a mesma estrutura de dados do Desenvolvedor 1 para que o Líder consiga mesclar os códigos facilmente.      
 
-**O que falta fazer?:** Aprimorar cálculo do erro final
+**Tudo feito**
 
 ## 4. Desenvolvedor 3 (Método de Newton-Raphson) - Diego
 **Responsabilidade central:** Lidar com a terceira e mais complexa exigência algorítmica do Tema 01.   
 **Tarefas:** Calcular matematicamente a derivada da função $f(d)=a*d-d*ln(d)$ e implementar o método de Newton-Raphson em C/C++. Implementar travas matemáticas no código para o caso da derivada se aproximar de zero durante as iterações.      
 
-**O que falta fazer?:** Nada
+**Tudo feito**
 
 ## 5. Engenheiro de Testes e Geração de Quadros - Max
 **Responsabilidade central:** Criar os dados de saída requisitados (outputs) usando o código integrado.   
@@ -53,7 +50,6 @@ Este repositório foi criado com o objetivo de auxiliar o grupo no trabalho 01 q
 
 ## OBS's
 
-@Chimecho, @Caio e @Diego coloquei o struct que os métodos têm q retornar p programa ficar certin no começo do código.
+@Max olhe tudo: se tá retornando tudo certo, se n tá faltando nd q o Bento pediu, etc.
 
-
-É importante ressaltar que, independentemente desta divisão de desenvolvimento, todos os 7 membros devem obrigatoriamente apresentar alguma parte do trabalho no dia do sorteio, sob pena de receber nota zero na apresentação.   
+@Davi faz a análise completa pls. Tem um ngc p estimar a raiz que a gnt implementou no código tem que ter isso e talvez tenha outras coisas tb. Enfim, tem que olhar o código todo e analisar matematicamente a função tb.
