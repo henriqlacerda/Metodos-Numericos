@@ -17,7 +17,7 @@ Este repositório foi criado com o objetivo de auxiliar o grupo no trabalho 01 q
 **Responsabilidade central:** Lidar com a primeira exigência algorítmica do Tema 01.   
 **Tarefas:** Implementar em C/C++ o algoritmo do método da Bissecção aplicado exclusivamente à equação do foguete espacial $f(d)=a*d-d*ln(d)$. Estruturar o retorno da função para que ela entregue a raiz calculada, o número de iterações e o erro final.      
 
-**O que falta fazer?:** Tudo
+**O que falta fazer?:** Nada
 
 ## 3. Desenvolvedor 2 (Método da Posição Falsa) - Caio
 **Responsabilidade central:** Lidar com a segunda exigência algorítmica do Tema 01.   
@@ -29,7 +29,7 @@ Este repositório foi criado com o objetivo de auxiliar o grupo no trabalho 01 q
 **Responsabilidade central:** Lidar com a terceira e mais complexa exigência algorítmica do Tema 01.   
 **Tarefas:** Calcular matematicamente a derivada da função $f(d)=a*d-d*ln(d)$ e implementar o método de Newton-Raphson em C/C++. Implementar travas matemáticas no código para o caso da derivada se aproximar de zero durante as iterações.      
 
-**O que falta fazer?:** Tudo
+**O que falta fazer?:** Nada
 
 ## 5. Engenheiro de Testes e Geração de Quadros - Max
 **Responsabilidade central:** Criar os dados de saída requisitados (outputs) usando o código integrado.   
