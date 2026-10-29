@@ -12,7 +12,7 @@ inline ResultadoMetodo newtonRaphson(double a, double dInicial, double epsilon) 
     int iteracoes = 0;
     double dAtual = dInicial;
     double dAnterior = dAtual;
-    double erro = INFINITY;
+    double erro = -1.0;
     bool convergiu = false;
 
     int maxIteracoes = 1000;
@@ -20,7 +20,8 @@ inline ResultadoMetodo newtonRaphson(double a, double dInicial, double epsilon) 
     // Validação do domínio do logaritmo ln(d > 0)
     if (dAtual <= 0) {
         resultado.raiz = dAtual;
-        resultado.erroFinal = INFINITY;
+        resultado.erroAbs = -1.0;
+        resultado.erroRel = -1.0;
         resultado.convergiu = false;
         return resultado;
     }
@@ -67,7 +68,8 @@ inline ResultadoMetodo newtonRaphson(double a, double dInicial, double epsilon) 
 
     resultado.raiz = dAtual;
     resultado.iteracoes = iteracoes;
-    resultado.erroFinal = erro;
+    resultado.erroAbs = erro;
+    resultado.erroRel = erro / dAtual;
     resultado.convergiu = convergiu;
 
     return resultado;

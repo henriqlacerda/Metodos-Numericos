@@ -16,7 +16,8 @@ inline ResultadoMetodo posicaoFalsa(double a, double epsilon, double limInf, dou
 
     if (Fa * Fb > 0.0) {
         resultado.raiz = -1.0;
-        resultado.erroFinal = -1.0;
+        resultado.erroAbs = -1.0;
+        resultado.erroRel = -1.0;
         resultado.convergiu = false;
         return resultado;
     }
@@ -57,7 +58,8 @@ inline ResultadoMetodo posicaoFalsa(double a, double epsilon, double limInf, dou
 
     resultado.raiz = d;
     resultado.iteracoes = iteracoes;
-    resultado.erroFinal = erro;
+    resultado.erroAbs = erro;
+    resultado.erroRel = erro / d;
     resultado.convergiu = (erro <= epsilon);
 
     return resultado;
