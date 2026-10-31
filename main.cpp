@@ -25,24 +25,20 @@ int obterCasasDecimais(double eps) {
     return (casas < 2) ? 2 : casas;
 }
 
-// Função auxiliar para formatar a célula do Quadro Comparativo
-string formatarComparativo(int iteracoes, double erroAbs, double erroRel) {
-    ostringstream oss;
-    oss << iteracoes << " it | " 
-        << scientific << setprecision(2) << erroAbs << " | " 
-        << erroRel;
-    return oss.str();
-}
-
 int main() {
     int n;
     double epsilon;
+    
+    string sepHeader(120, '-');
+    string sepResposta(126, '-');
+    string sepFoguete(100, '-');
+    string sepMetodos(100, '-');
 
-    cout << CIANO << "---------------------------------------------------------------------------------------------------------\n";
-    cout << "                    TEMA 01 - DESLOCAMENTO DO FOGUETE ESPACIAL (MÉTODOS NUMÉRICOS)\n";
-    cout << "---------------------------------------------------------------------------------------------------------\n\n" << RESET;
+    cout << CIANO << sepHeader << "\n";
+    cout << "                    TEMA 01 - DESLOCAMENTO DO FOGUETE ESPACIAL (METODOS NUMERICOS)\n";
+    cout << sepHeader << "\n\n" << RESET;
 
-    cout << NEGRITO << "Digite o número de foguetes a analisar (n): " << RESET;
+    cout << NEGRITO << "Digite o numero de foguetes a analisar (n): " << RESET;
     cin >> n;
 
     vector<double> valoresA(n);
@@ -50,15 +46,15 @@ int main() {
     vector<double> limSup(n);
 
     for (int i = 0; i < n; i++) {
-        cout << "Digite o parâmetro de ajuste 'a' para o foguete " << i + 1 << ": ";
+        cout << "Digite o parametro de ajuste 'a' para o foguete " << i + 1 << ": ";
         cin >> valoresA[i];
 
         gerarIntervaloAutomatico(valoresA[i], limInf[i], limSup[i]);
         cout << AMARELO << "  -> Isolamento gerado analiticamente (e^a): [" 
-             << limInf[i] << ", " << limSup[i] << "]\n\n" << RESET;
+             << defaultfloat << setprecision(4) << limInf[i] << ", " << limSup[i] << "]\n\n" << RESET;
     }
 
-    cout << NEGRITO << "Digite a precisão desejada (epsilon, ex: 0.00001): " << RESET;
+    cout << NEGRITO << "Digite a precisao desejada (epsilon, ex: 0.00001): " << RESET;
     cin >> epsilon;
 
     int casasPrecision = obterCasasDecimais(epsilon);
@@ -75,65 +71,80 @@ int main() {
         resultadosNR[i] = newtonRaphson(a, chuteInicial, epsilon);
     }
 
-    cout << "\n" << CIANO << "---------------------------------------------------------------------------------------------------------\n";
-    cout << "                                QUADRO RESPOSTA (RAÍZES CALCULADAS)\n";
-    cout << "---------------------------------------------------------------------------------------------------------\n" << RESET;
-    cout << left << setw(9) << "Foguete" 
-         << setw(10) << "Valor a" 
-         << setw(20) << "Raiz Bissecção" 
-         << setw(20) << "Raiz Pos. Falsa" 
-         << setw(20) << "Raiz Newton" 
-         << setw(15) << "Estado" << "\n";
-    cout << "---------------------------------------------------------------------------------------------------------\n";
+    cout << "\n" << CIANO << sepResposta << "\n";
+    cout << "                                QUADRO RESPOSTA (RAIZES E ERROS)\n";
+    cout << sepResposta << "\n" << RESET;
+    
+    cout << left << setw(8) << "Foguete" << " | "
+         << setw(8) << "Valor a" << " | "
+         << setw(25) << "Bisseccao (Raiz | Erro)" << " | "
+         << setw(25) << "Pos. Falsa (Raiz | Erro)" << " | "
+         << setw(25) << "Newton (Raiz | Erro)" << " | "
+         << setw(10) << "Estado" << "\n";
+    cout << sepResposta << "\n";
 
     for (int i = 0; i < n; i++) {
-        cout << left << setw(9) << (i + 1)
-             << defaultfloat << setprecision(2) << setw(10) << valoresA[i];
-             
-        cout << fixed << setprecision(casasPrecision)
-             << setw(20) << resultadosB[i].raiz
-             << setw(20) << resultadosPF[i].raiz
-             << setw(20) << resultadosNR[i].raiz;
+        ostringstream bStr, pfStr, nrStr;
+        bStr << fixed << setprecision(casasPrecision) << resultadosB[i].raiz << " (" << scientific << setprecision(1) << resultadosB[i].erroAbs << ")";
+        pfStr << fixed << setprecision(casasPrecision) << resultadosPF[i].raiz << " (" << scientific << setprecision(1) << resultadosPF[i].erroAbs << ")";
+        nrStr << fixed << setprecision(casasPrecision) << resultadosNR[i].raiz << " (" << scientific << setprecision(1) << resultadosNR[i].erroAbs << ")";
 
-        // Estado de segurança
-        if (resultadosNR[i].raiz > 2.0) {
-            cout << VERMELHO << "[EXPLOSÃO]" << RESET << "\n";
+        cout << left << setw(8) << (i + 1) << " | "
+             << defaultfloat << setprecision(2) << setw(8) << valoresA[i] << " | "
+             << setw(25) << bStr.str() << " | "
+             << setw(25) << pfStr.str() << " | "
+             << setw(25) << nrStr.str() << " | ";
+
+        bool explosao = (resultadosB[i].raiz > 2.0) || (resultadosPF[i].raiz > 2.0) || (resultadosNR[i].raiz > 2.0);
+        
+        if (explosao) {
+            cout << VERMELHO << left << setw(10) << "[EXPLOSAO]" << RESET << "\n";
         } else {
-            cout << VERDE << "[SEGURO]" << RESET << "\n";
+            cout << VERDE << left << setw(10) << "[SEGURO]" << RESET << "\n";
         }
     }
-    cout << "---------------------------------------------------------------------------------------------------------\n\n";
+    cout << sepResposta << "\n\n\n";
 
-    cout << CIANO << "------------------------------------------------------------------------------------------------------------------------------\n";
-    cout << "                                              QUADRO COMPARATIVO (ITERAÇÕES E ERROS)\n";
-    cout << "------------------------------------------------------------------------------------------------------------------------------\n" << RESET;
-    cout << "Epsilon utilizado: " << scientific << epsilon << defaultfloat << "\n";
-    cout << "Formato das colunas de método: (it | Erro Abs | Erro Rel)\n";
-    cout << "------------------------------------------------------------------------------------------------------------------------------\n";
-    cout << left << setw(9) << "Foguete"
-         << setw(10) << "Valor a"
-         << setw(16) << "Isolamento"
-         << setw(30) << "Bissecção"
-         << setw(30) << "Pos. Falsa"
-         << setw(30) << "Newton" << "\n";
-    cout << "------------------------------------------------------------------------------------------------------------------------------\n";
+    cout << CIANO << "----------------------------------------------------------------------------------------------------\n";
+    cout << "                                QUADRO COMPARATIVO DETALHADO\n";
+    cout << "----------------------------------------------------------------------------------------------------\n" << RESET;
+    cout << "Epsilon utilizado: " << scientific << epsilon << defaultfloat << "\n\n";
 
     for (int i = 0; i < n; i++) {
-        cout << left << setw(9) << (i + 1)
-             << defaultfloat << setprecision(2) << setw(10) << valoresA[i];
+        ostringstream ossIsol;
+        ossIsol << "[" << defaultfloat << setprecision(3) << limInf[i] << ", " << limSup[i] << "]";
 
-        string isol = "[" + to_string((int)limInf[i]) + ", " + to_string((int)limSup[i]) + "]";
-        cout << setw(16) << isol;
+        cout << CIANO << sepFoguete << "\n" << RESET;
+        cout << NEGRITO << " FOGUETE " << (i + 1) 
+             << "   |   Valor a: " << defaultfloat << setprecision(2) << valoresA[i] 
+             << "   |   Isolamento: " << ossIsol.str() << RESET << "\n";
+        cout << CIANO << sepFoguete << "\n" << RESET;
 
-        string bStr = formatarComparativo(resultadosB[i].iteracoes, resultadosB[i].erroAbs, resultadosB[i].erroRel);
-        string pfStr = formatarComparativo(resultadosPF[i].iteracoes, resultadosPF[i].erroAbs, resultadosPF[i].erroRel);
-        string nrStr = formatarComparativo(resultadosNR[i].iteracoes, resultadosNR[i].erroAbs, resultadosNR[i].erroRel);
+        cout << left << setw(16) << "Metodo" << " | "
+             << setw(16) << "Raiz" << " | "
+             << setw(12) << "Iteracoes" << " | "
+             << setw(20) << "Erro Absoluto" << " | "
+             << setw(20) << "Erro Relativo" << "\n";
+        cout << sepMetodos << "\n";
 
-        cout << setw(30) << bStr
-             << setw(30) << pfStr
-             << setw(30) << nrStr << "\n";
+        cout << left << setw(16) << "Bisseccao" << " | "
+             << fixed << setprecision(casasPrecision) << setw(16) << resultadosB[i].raiz << " | "
+             << setw(12) << resultadosB[i].iteracoes << " | "
+             << scientific << setprecision(2) << setw(20) << resultadosB[i].erroAbs << " | "
+             << scientific << setprecision(2) << setw(20) << resultadosB[i].erroRel << "\n";
+
+        cout << left << setw(16) << "Pos. Falsa" << " | "
+             << fixed << setprecision(casasPrecision) << setw(16) << resultadosPF[i].raiz << " | "
+             << setw(12) << resultadosPF[i].iteracoes << " | "
+             << scientific << setprecision(2) << setw(20) << resultadosPF[i].erroAbs << " | "
+             << scientific << setprecision(2) << setw(20) << resultadosPF[i].erroRel << "\n";
+
+        cout << left << setw(16) << "Newton" << " | "
+             << fixed << setprecision(casasPrecision) << setw(16) << resultadosNR[i].raiz << " | "
+             << setw(12) << resultadosNR[i].iteracoes << " | "
+             << scientific << setprecision(2) << setw(20) << resultadosNR[i].erroAbs << " | "
+             << scientific << setprecision(2) << setw(20) << resultadosNR[i].erroRel << "\n\n";
     }
-    cout << "------------------------------------------------------------------------------------------------------------------------------\n";
 
     return 0;
 }
