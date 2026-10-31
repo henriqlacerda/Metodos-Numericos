@@ -7,7 +7,7 @@
 #include "estruturas.h"
 
 inline ResultadoMetodo posicaoFalsa(double a, double epsilon, double limInf, double limSup) {
-    ResultadoMetodo resultado = {0.0, 0, 0.0, false};
+    ResultadoMetodo resultado = {};
 
     double a_int = limInf;
     double b_int = limSup;

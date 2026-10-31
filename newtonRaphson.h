@@ -7,7 +7,7 @@
 
 // Função do método Newton-Raphson
 inline ResultadoMetodo newtonRaphson(double a, double dInicial, double epsilon) {
-    ResultadoMetodo resultado = {0.0, 0, 0.0, false};
+    ResultadoMetodo resultado = {};
 
     int iteracoes = 0;
     double dAtual = dInicial;
