@@ -48,6 +48,10 @@ inline ResultadoMetodo bisseccao(double a, double epsilon, double limInf, double
         erro = (b_int - a_int) / 2.0;
     }
 
+    if (erro > 0.0) {
+        c = (a_int + b_int) / 2.0;
+    }
+
     resultado.raiz = c;
     resultado.iteracoes = iteracoes;
     resultado.erroAbs = erro;
