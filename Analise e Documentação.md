@@ -10,7 +10,8 @@
 [Quadro de resultados](#parte03)  
 [Efeito de $a$ em cada método](#parte04)  
 [Conclusões](#parte05)  
-[Perguntas prováveis e respostas](#parte06)
+[Perguntas prováveis e respostas](#parte06)  
+[Apresentação](#parte07)
 
 
 ---
@@ -198,3 +199,13 @@ Os três métodos concordam no estado de todos os foguetes testados.
 7. **"E se $a = \ln 2$?"** Então $d = 2$ exatamente, que não passa de 2 cm: o foguete é seguro. Mas para $|a - \ln 2| < \varepsilon/2 \approx 5 \cdot 10^{-6}$, a raiz calculada pode cair do outro lado de 2, e com essa precisão a classificação fica inconclusiva.
 
 8. **"Algum método errou mais que $\varepsilon$?"** Não. Nos 15 foguetes, o erro real ficou abaixo de $10^{-5}$ nos três métodos. A Bissecção devolve o ponto médio do intervalo final. A Posição Falsa e Newton param por $|f(d)| \leq \varepsilon$, que aqui equivale ao erro real porque $f'(e^{a}) = -1$.
+
+---
+
+<a id='parte07'></a>
+
+## Apresentação
+
+<a href="https://canva.link/vniow0kjr5s8u29">
+  <img src="capa.png" width="700">
+</a>

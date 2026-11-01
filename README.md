@@ -8,7 +8,7 @@ Este repositório foi criado com o objetivo de auxiliar o grupo no trabalho 01 q
 **Responsabilidade central:** Coordenar o andamento da equipe, estruturar o programa base e realizar o envio.  
 **Tarefas:** Criar a interface de texto do programa em C/C++ que recebe os dados de entrada: número de foguetes ($n$), o parâmetro $a$ de cada foguete e a precisão $\epsilon$. Integrar os códigos dos desenvolvedores em um único arquivo, compilar o projeto em ambiente Linux garantindo que o executável não tenha ligações dinâmicas (LIBs estáticas), e enviar o arquivo final compactado.   
 
-**Tudo feito**
+**Enviar**
 
 ## 2. Desenvolvedor 1 (Método da Bissecção) - Chimecho
 **Responsabilidade central:** Lidar com a primeira exigência algorítmica do Tema 01.   
@@ -32,24 +32,22 @@ Este repositório foi criado com o objetivo de auxiliar o grupo no trabalho 01 q
 **Responsabilidade central:** Criar os dados de saída requisitados (outputs) usando o código integrado.   
 **Tarefas:** Rodar o sistema usando o teste padrão obrigatório ($a=1$, isolamento = (2, 3) e $\epsilon=10^{-5}$). Alimentar o sistema com dados variados para montar o quadro resposta (com os erros de cada foguete) e o quadro comparativo (mostrando isolamento, raízes e dados para cada método executado).   
 
-**O que falta fazer?:** Tudo
+**Tudo feito**
   
-## 6. Analista Matemático - ?
+## 6. Analista Matemático - Davi
 **Responsabilidade central:** Cumprir o item "g" do escopo do projeto.   
 **Tarefas:** Avaliar os resultados e quadros gerados pelo Membro 5 e redigir uma análise detalhada sobre o efeito da variação do valor do parâmetro $a$ sobre o comportamento de cada método. Explicar, por exemplo, qual método convergiu mais rápido, qual teve mais dificuldade dependendo do valor de $a$, e por que isso ocorreu. Esta análise formará a "Conclusão" da apresentação.      
 
-**O que falta fazer?:** Tudo
+**Tudo feito**
 
-## 7. Estruturador da Apresentação - ?
+## 7. Estruturador da Apresentação - Carlos
 **Responsabilidade central:** Garantir os 3,0 pontos destinados à etapa visual e oral.   
 **Tarefas:** Montar os slides contendo obrigatoriamente Introdução, Metodologia, Exemplos e Conclusão. Como o tempo total é de apenas 15 minutos (mais 5 minutos de dúvidas), este membro deve dividir o roteiro e cronometrar as falas para que os 7 consigam falar de forma fluida sem estourar o tempo.   
 
-**O que falta fazer?:** Tudo
+**Tudo feito**
 
 ---
 
 ## OBS's
 
-@Max olhe tudo: se tá retornando tudo certo, se n tá faltando nd q o Bento pediu, etc.
-
-@Davi faz a análise completa pls. Tem um ngc p estimar a raiz que a gnt implementou no código tem que ter isso e talvez tenha outras coisas tb. Enfim, tem que olhar o código todo e analisar matematicamente a função tb.
+Glória a Deus acabou
