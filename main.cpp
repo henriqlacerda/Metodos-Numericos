@@ -51,7 +51,7 @@ int main() {
 
         gerarIntervaloAutomatico(valoresA[i], limInf[i], limSup[i]);
         cout << AMARELO << "  -> Isolamento gerado analiticamente (e^a): [" 
-             << defaultfloat << setprecision(4) << limInf[i] << ", " << limSup[i] << "]\n\n" << RESET;
+             << fixed << setprecision(0) << limInf[i] << ", " << limSup[i] << "]\n\n" << RESET;
     }
 
     cout << NEGRITO << "Digite a precisao desejada (epsilon, ex: 0.00001): " << RESET;
@@ -75,8 +75,9 @@ int main() {
     cout << "                                QUADRO RESPOSTA (RAIZES E ERROS)\n";
     cout << sepResposta << "\n" << RESET;
     
+    // Alargado o 'setw' de "Valor a" de 8 para 12 para comportar mais casas decimais sem quebrar a tabela
     cout << left << setw(8) << "Foguete" << " | "
-         << setw(8) << "Valor a" << " | "
+         << setw(12) << "Valor a" << " | "
          << setw(25) << "Bisseccao (Raiz | Erro)" << " | "
          << setw(25) << "Pos. Falsa (Raiz | Erro)" << " | "
          << setw(25) << "Newton (Raiz | Erro)" << " | "
@@ -90,7 +91,7 @@ int main() {
         nrStr << fixed << setprecision(casasPrecision) << resultadosNR[i].raiz << " (" << scientific << setprecision(1) << resultadosNR[i].erroAbs << ")";
 
         cout << left << setw(8) << (i + 1) << " | "
-             << defaultfloat << setprecision(2) << setw(8) << valoresA[i] << " | "
+             << fixed << setprecision(casasPrecision) << setw(12) << valoresA[i] << " | "
              << setw(25) << bStr.str() << " | "
              << setw(25) << pfStr.str() << " | "
              << setw(25) << nrStr.str() << " | ";
@@ -112,11 +113,11 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         ostringstream ossIsol;
-        ossIsol << "[" << defaultfloat << setprecision(3) << limInf[i] << ", " << limSup[i] << "]";
+        ossIsol << "[" << fixed << setprecision(0) << limInf[i] << ", " << limSup[i] << "]";
 
         cout << CIANO << sepFoguete << "\n" << RESET;
         cout << NEGRITO << " FOGUETE " << (i + 1) 
-             << "   |   Valor a: " << defaultfloat << setprecision(2) << valoresA[i] 
+             << "   |   Valor a: " << fixed << setprecision(casasPrecision) << valoresA[i] 
              << "   |   Isolamento: " << ossIsol.str() << RESET << "\n";
         cout << CIANO << sepFoguete << "\n" << RESET;
 

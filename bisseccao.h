@@ -6,7 +6,7 @@
 #include "estruturas.h"
 
 inline ResultadoMetodo bisseccao(double a, double epsilon, double limInf, double limSup) {
-    ResultadoMetodo resultado = {0.0, 0, 0.0, false};
+    ResultadoMetodo resultado = {0.0, 0, 0.0, 0.0, false};
     
     double fa = f(a, limInf);
     double fb = f(a, limSup);
