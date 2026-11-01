@@ -2,12 +2,11 @@
 #define METNUMERICOS_POSICAOFALSA_H
 
 #include <cmath>
-#include <algorithm>
 #include "funcoes.h"
 #include "estruturas.h"
 
 inline ResultadoMetodo posicaoFalsa(double a, double epsilon, double limInf, double limSup) {
-    ResultadoMetodo resultado = {0.0, 0, 0.0, false};
+    ResultadoMetodo resultado = {};
 
     double a_int = limInf;
     double b_int = limSup;
@@ -23,29 +22,19 @@ inline ResultadoMetodo posicaoFalsa(double a, double epsilon, double limInf, dou
     }
 
     double d = a_int;
-    double d_ant = d;
-    double Fd = Fa;
-    double erro = INFINITY;
+    double erro = std::abs(Fa);   // erro da aproximação inicial: |f(d)|
     int iteracoes = 0;
     int maxIteracoes = 1000;
 
-    while (iteracoes < maxIteracoes) {
+    // Mesmo critério do Newton-Raphson: para quando |f(d)| <= epsilon
+    while (erro > epsilon && iteracoes < maxIteracoes) {
         if (std::abs(Fb - Fa) < 1e-15) break;
 
-        d_ant = d;
         d = (a_int * Fb - b_int * Fa) / (Fb - Fa);
-        Fd = f(a, d);
+        double Fd = f(a, d);
         iteracoes++;
 
-        double erroPasso = std::abs(d - d_ant);
-        double erroFuncao = std::abs(Fd);
-
-        // Define o erro final como o menor valor atingido entre a variação e o valor da função
-        erro = std::min(erroPasso, erroFuncao);
-
-        if (erro <= epsilon) {
-            break;
-        }
+        erro = std::abs(Fd);
 
         if (Fa * Fd > 0.0) {
             a_int = d;
