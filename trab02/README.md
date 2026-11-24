@@ -38,3 +38,12 @@ Como $max | d_i | \approx 1,83 cm < 2 cm$, com os dados padrão o foguete não e
 - Combinem a assinatura das funções antes de codar (ex.: void lu(const Matriz& A, Matriz& L, Matriz& U)). Assim a integração do Henrique não vira um caos.
 - Incluam no quadro um caso com pivô nulo ($A_{1 1} = 0$). A LU sem pivotamento quebra nele, e isso entra na análise.
 - Todo mundo precisa estar presente no dia da apresentação. Quem faltar leva 0 naquela parte.
+
+**Avisos:**
+- Henrique tem que lembrar de tirar esse Makefile antes de entregar
+- **Onde cada um mexe:**
+    - Max: lu.cpp, que tem fatoracaoLU, as substituições progressiva e regressiva e resolveLU.
+    - Chimecho: ldp.cpp, que tem fatoracaoLDP e resolveLDP.
+    - Diego: entrada_saida.cpp, que hoje só carrega o exemplo padrão. Falta a leitura real da entrada e a validação.
+    - Henrique: main.cpp, matriz.cpp (já implementado: resíduo e maior módulo), Makefile e a integração.
+    - Caio, Carlos e Davi: não mexem no código. Usam o foguete para gerar os quadros e a análise.
