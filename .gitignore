@@ -1,0 +1,10 @@
+# executáveis do trab02
+/trab02/foguete
+/trab02/teste
+
+# arquivos de compilação
+*.o
+cmake-build-*/
+
+# configurações do CLion
+.idea/
